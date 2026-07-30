@@ -1,0 +1,48 @@
+<h3 class="text-center">Product List</h3>
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-sm-6 offset-3">
+            <input type="search" (input)="search($event)" class="form-control" placeholder="Search..." appCharonly appDisablecopypaste>
+        </div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary" (click)="sort('A')">Sort Asc</button>
+            <button class="btn btn-secondary mx-1" (click)="sort('D')">Sort Desc</button>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col-sm-6">
+            <button class="btn btn-primary mx-1" (click)="openSweetAlert()">Open SweetAlert</button>
+            <button class="btn btn-primary" (click)="openSnackBar()">Open SnackBar</button>
+        </div>
+    </div>
+    <div class="row">
+        @for (prod of filProductArr | paginate: { itemsPerPage: 4, currentPage: p}; track $index){
+        <div class="col-sm-3">
+            <div class="card text-center mb-4">
+                <img src="{{prod.image}}" class="card-img-top" alt="..." height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">{{prod.category}}</h5>
+                    <p class="card-text text-truncate">{{prod.title}}</p>
+                    <p class="card-text text-truncate">{{prod.description}}</p>
+                    <p class="card-text">
+                        <fa-icon [icon]="faUsd"></fa-icon>
+                        {{prod.price}}</p>
+                    <p class="card-text">{{prod.rating.rate}}
+                        <fa-icon [icon]="faStar"></fa-icon>
+                    </p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        }
+        @empty{
+            <div class="text-center mb-4">No Products to display.</div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-4">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+<h2 class="text-center">Lets learn databinding</h2>
+
+<div class="border border-2 rounded-2 p-2 m-2">
+    <div>User Name: {{userName}}</div>
+    <div>User Name: <span [innerText]="userName"></span></div>
+
+    <div>
+        <img src="{{img_url}}" alt="" width="200" height="200" />
+        <img [src]="img_url" alt="" width="200" height="200" class="mx-2"/>
+        <img bind-src="img_url" alt="" width="200" height="200" />
+    </div>
+
+    <div class="my-2">
+        1 way: <input type="text" value="{{userName}}">
+        1 way: <input type="text" [value]="userName" class="mx-2">
+        1 way: <input type="text" bind-value="userName" class="mx-2">
+        2 way: <input type="text" [(ngModel)]="userName" class="mx-2">
+    </div>
+    <div>
+        <button disabled="{{flag}}" class="btn btn-primary">Click me</button>
+        <button [disabled]="flag" class="btn btn-primary mx-2">Click me</button>
+        <button bind-disabled="flag" class="btn btn-primary">Click me</button>
+
+        <button (click)="toggleFlag()" class="btn btn-primary mx-2">Toggle Flag</button>
+        <span>Flag: {{flag}}</span>
+    </div>
+
+    <div>
+        <div>1. Have a paragraph and a toggle button; on clicking the button, control the visibility (Show / Hide) of the paragraph.</div>
+        <h1 [hidden]="paraFlag">Hi, This is the paragraph to be hidden</h1>
+        <button (click)="togglePara()" class="btn btn-primary">{{paraFlag ? 'SHOW' : 'HIDE'}}</button>
+    </div>
+    <div>
+        <div>2. Create a dropdown with state names; when the user changes the dropdown value, print the selected value in a div.</div>
+        <select class="select" (change)="stateSelect($event)">
+            <option value="">Select</option>
+            <option>Arizona</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Tennessee">Tennessee</option>
+        </select>
+        <div>Selected state is: {{selectedState}}</div>
+    </div>
+    <div>
+        <div>3. create a input box, toggle the type of that input box to (text/password)</div>
+        <input type="{{type}}" class="mx-2">
+        <button (click)="toggleType()" class="btn btn-primary">Toggle Type</button>
+    </div>
+    <div>
+        <div>4. Create a counter example with three controls: Increment, Decrement, and Reset.</div>
+        <button (click)="countControl('i')" class="btn btn-success">Increment</button>
+        <button (click)="countControl('d')" class="btn btn-danger mx-2">Decrement</button>
+        <button (click)="countControl('r')" class="btn btn-secondary">Reset</button>
+        <div>Counter: {{count}}</div>
+    </div>
+    <div>
+        <div>5. Create an inputBox to enter temperature in celcius, convert temperature from Celsius to Fahrenheit.</div>
+        <input type="number" [(ngModel)] = 'cel'>
+        <!-- <button (click)="convertTemp()" class="btn btn-primary mx-2">Convert to Fahrenheit</button> -->
+        <div>Fahrenheit: {{(cel*(9/5))+32}}</div>
+    </div>
+    <div>
+        <div>6. greeting based on time (good morning, good afternoon, good evening)</div>
+        <div>
+            <button (click)="getGreeting()" class="btn btn-primary">Get Greeting!</button>
+            {{greeting}}
+        </div>
+    </div>
+    <div>
+        <div>7. Create a textarea with maxLength = 100; as the user keeps typing, count and display how many words and how many characters are typed and  also display remaining characters.</div>
+        <textarea type="text" maxlength="100" [(ngModel)]="inputText" (input)="countText()"></textarea>
+        <div>No.of words typed: {{words}}, No.of characters typed: {{char}}, No.of characters remaining: {{100 - char}}</div>
+    </div>
+    <div>
+        <div>8. Create two input boxes and a dropdown (+ , - , * , /) and perform arithmetic operations based on the selected operator.</div>
+        <input type="number" [(ngModel)]="num1">
+        <select [(ngModel)]="operator" class="select mx-2">
+            <option value="">Select</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" [(ngModel)]="num2" class="mx-2">
+        <button class="btn btn-primary" (click)="calc()">Calculate</button>
+        <div>Arithmetic value of entered 2 numbers is: {{res}}</div>
+    </div>
+    <div>
+        <div>9. Create a button that increases font size and another button that decreases font size for a paragraph.</div>
+        <p [style.font-size.px]=fontSize>This is the paragraph for which the font size needs to increase or decrease </p>
+        <button (click)="size('I')" class="btn btn-primary mx-2">Increase</button>
+        <button (click)="size('D')" class="btn btn-primary">Decrease</button>
+    </div>
+    <div>
+        <div>10. Create a dropdown with colors and change the background color of a div based on selection.</div>
+        <select [(ngModel)]="selectClr" (change)="changeClr()">
+            <option value="">Select</option>
+            <option value="blue">blue</option>
+            <option value="green">green</option>
+            <option value="orange">orange</option>
+            <option value="yellow">yellow</option>
+            <option value="purple">purple</option>
+            <option value="cyan">cyan</option>
+        </select>
+        <div [style.background-color]="bgColor">The color of this div changes with selection!!!</div>
+    </div>
+</div>
+
+

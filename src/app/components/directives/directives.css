@@ -1,0 +1,25 @@
+.inactive td {
+    color: gray;
+}
+.managerCls {
+    font-weight: bold;
+    color: blue;
+}
+.manager td {
+    background-color: lightyellow;
+}
+.developer td{
+    background-color: lightblue;
+}
+.tester td {
+    background-color: lightpink;
+}
+.green {
+    background-color: lightgreen !important;
+}
+.orange {
+    background-color: orange !important;
+}
+.red {
+    background-color: lightcoral !important;
+}

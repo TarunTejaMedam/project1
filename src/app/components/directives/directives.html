@@ -1,0 +1,219 @@
+<h2 class="text-center">Lets learn Directives</h2>
+
+<ng-content></ng-content>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>if/else before angular-17</div>
+    <input type="number" [(ngModel)]="num">
+    <div *ngIf="num%2==0">{{num}} is a Even number</div>
+    <div *ngIf="num%2!=0">{{num}} is a Odd number</div>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>if/else after angular-17</div>
+    <input type="number" [(ngModel)]="num">
+    @if(num%2==0){
+    <div>{{num}} is Even</div>
+    }@else{
+    <div>{{num}} is Odd</div>
+    }
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    @switch (num) {
+    @case (1) { <h1>Monday</h1> }
+    @case (2) { <h1>Tuesday</h1> }
+    @case (3) { <h1>Wednesday</h1> }
+    @case (4) { <h1>Thursday</h1> }
+    @case (5) { <h1>Friday</h1> }
+    @case (6) { <h1>Saturday</h1> }
+    @case (7) { <h1>Sunday</h1> }
+    @default { <h1>Not a Valid number</h1> }
+    }
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>Course List:</div>
+    <ul>
+        @for(course of courseArr; track $index){
+        <li>{{course}}</li>
+        }@empty{
+        No Course to display.
+        }
+    </ul>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>Course Dropdown:</div>
+    <select>
+        @for(course of courseArr; track $index){
+        <option>{{course}}</option>
+        }@empty{
+        No Course to display.
+        }
+    </select>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>Employee Table:</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Emp Id</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>Is First?</th>
+                <th>Is Last?</th>
+                <th>Is Even?</th>
+                <th>Is Odd?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (emp of employees; track $index) {
+            <tr>
+                <td>{{$index + 1}}</td>
+                <td>{{emp.eId}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.gender}}</td>
+                <td>{{emp.sal}}</td>
+                <td>{{$first}}</td>
+                <td>{{$last}}</td>
+                <td>{{$even}}</td>
+                <td>{{$odd}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>Tasks Table:</div>
+    <select (change)="statusChange($event)">
+        <option value="All">All</option>
+        <option value="Completed">Completed</option>
+        <option value="Pending">Pending</option>
+    </select>
+    <div>{{completedCount()}} out of {{tasks.length}} tasks are completed</div>
+    <table class="table table-bordered">
+        <tbody>
+            @for(task of filteredTasks; track $index){
+            <tr [style.text-decoration]="task.completed ? 'line-through' : 'none'">
+                <td><input type="checkbox" [(ngModel)]="task.completed"></td>
+                <td>{{task.id}}</td>
+                <td>{{task.title}}</td>
+                <td>{{task.completed}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="border boder-2 rounded-2 m-2 p-2">
+    <div class="container">
+        <select (change)="filterCat($event)">
+            <option value="All">All</option>
+            @for(cat of categories; track $index){
+                <option [value]="cat">{{cat}}</option>
+            }
+        </select>
+        <div class="row row-cols-md-4">
+            @for(prod of filteredProducts; track $index){
+            <div class="card mx-2 mb-2" style="width: 18rem;">
+                <img src="{{prod.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{prod.title}}</h5>
+                    <p class="card-text">{{prod.description}}</p>
+                    <h6 class="card-subtitle text-body-secondary">Rating: {{prod.rating.rate}} ({{prod.rating.count}})</h6>
+                    <p class="card-text">{{prod.category}}</p>
+                    <h6 class="card-subtitle">$ {{prod.price}}</h6>
+                </div>
+            </div>
+            }@empty{
+                No products to display.
+            }
+        </div>
+    </div>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>ngStyle is used to apply some style conditionally.
+    </div>
+     <input type="number" [(ngModel)]="num">
+    <p [style.color]="num % 2 == 0 ? 'blue' : 'red'"> Add a style </p>
+    <p [style.fontSize.px]='num % 2 == 0 ? 24 : 36'> Add style with unit </p>
+    <p [style.background-color]=" num % 2 == 0?'green':'blue' "> Add style conditionally </p>
+    <p [ngStyle]="num % 2 == 0 ? myStyle1 : myStyle2"> NgStyle for multiple values </p>
+    <p [ngStyle]="myFunction()"> NgStyle for multiple values </p>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>ngClass is used to apply some css class conditionally.
+    </div>
+    <input type="number" [(ngModel)]="num">
+    <button class="btn mx-2" [ngClass]="num%2==0? 'btn-success' : 'btn-danger'">
+	Class Binding example
+    </button>
+</div>
+
+<div class="border border-2 rounded-2 m-2 p-2">
+    <div>Cart Items:</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Quantity Control</th>
+                <th>Sub-Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(items of cartItems; track $index){
+                <tr>
+                    <td>{{items.id}}</td>
+                    <td>{{items.name}}</td>
+                    <td>{{items.price}}</td>
+                    <td>{{items.qty}}</td>
+                    <td>
+                        <button (click)="qtyControl(items, 'I')" class="btn btn-success">+</button>
+                        <button (click)="qtyControl(items, 'D')" class="btn btn-danger mx-2">-</button>
+                    </td>
+                    <td>{{items.price*items.qty}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>Total Price: {{totalPrice()}}</div>
+</div>
+
+<div class="border border-2 rounde-2 m-2 p-2">
+    <div>Employee's Table</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Salary</th>
+                <th>Status</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(emp of employee; track $index){
+                <tr [ngClass]="rowStyle(emp)">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.name}}</td>
+                    <td [ngClass]="{'managerCls': emp.role == 'Manager'}">{{emp.role}}</td>
+                    <!-- <td [ngStyle]="emp.salary > 50000 ? green : red">{{emp.salary}}</td> -->
+                    <!-- <td class="badge" [ngClass]="badgeClr(emp.salary)">{{emp.salary}}</td> -->
+                    <td><span class="badge" [ngStyle]="badgeClr(emp.salary)">{{emp.salary}}</span></td>
+                    <!-- <td [ngClass]="{'inactive': emp.status == 'Inactive'}">{{emp.status}}</td> -->
+                    <td>{{emp.status}}</td>
+                    <td>{{emp.gender}}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
