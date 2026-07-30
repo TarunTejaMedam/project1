@@ -12,7 +12,7 @@
                             <th>Salary</th>
                             <th>Status</th>
                             <th>Gender</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,10 +25,8 @@
                             <td>{{emp.status}}</td>
                             <td>{{emp.gender}}</td>
                             <td>
-                                <button class="btn btn-primary" (click)="viewEmp(emp)" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal"><fa-icon [icon]="faEye"></fa-icon></button>
-                                <button class="btn btn-danger mx-2" (click)="deleteEmp(emp.id)"><fa-icon
-                                        [icon]="faTrash"></fa-icon></button>
+                                <button class="btn btn-primary" (click)="viewEmp(emp)" data-bs-toggle="modal" data-bs-target="#exampleModal"><fa-icon [icon]="faEye"></fa-icon></button>
+                                <button class="btn btn-danger mx-2" (click)="deleteEmp(emp.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
                             </td>
                         </tr>
                         }

@@ -4,7 +4,7 @@ import { faTrash, faEye, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
 import Snackbar from 'awesome-snackbar';
 import { FormsModule } from '@angular/forms';
-import { USER_ADDED } from '../../constants/message_constants';
+import { USER_ADDED, USER_DELETED } from '../../constants/message_constants';
 import { Charonly } from '../../directives/charonly';
 import { Disablecopypaste } from '../../directives/disablecopypaste';
 
@@ -33,24 +33,29 @@ export class EmployeeCRUD {
 
   deleteEmp(id: number) {
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.filEmployees = this.filEmployees.filter(emp => emp.id != id);
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
-      }
-    });
+    // Swal.fire({
+    //   title: "Are you sure?",
+    //   text: "You won't be able to revert this!",
+    //   icon: "warning",
+    //   showCancelButton: true,
+    //   confirmButtonColor: "#3085d6",
+    //   cancelButtonColor: "#d33",
+    //   confirmButtonText: "Yes, delete it!"
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     this.filEmployees = this.filEmployees.filter(emp => emp.id != id);
+    //     Swal.fire({
+    //       title: "Deleted!",
+    //       text: "Your file has been deleted.",
+    //       icon: "success",
+    //     });
+    //   }
+    // });
+
+    new Snackbar(USER_DELETED,
+      { position: 'top-center', theme: 'light', timeout: 5000, actionText: 'X' }
+    );
+    this.filEmployees = this.filEmployees.filter(emp => emp.id != id);
   }
 
   selectedEmp: any = null;
