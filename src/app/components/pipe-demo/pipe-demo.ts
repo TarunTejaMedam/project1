@@ -9,10 +9,11 @@ import { SalutationPipe } from '../../pipes/salutation-pipe';
 import { FilterPipe } from '../../pipes/filter-pipe';
 import { Disablecopypaste } from '../../directives/disablecopypaste';
 import { Charonly } from '../../directives/charonly';
+import { MySortPipePipe } from '../../pipes/my-sort-pipe-pipe';
 
 @Component({
   selector: 'app-pipe-demo',
-  imports: [CommonModule, FormsModule, RemainingPipe, OrdinalPipe, CreditcardPipe, AgePipe, SalutationPipe, FilterPipe, Disablecopypaste, Charonly],
+  imports: [CommonModule, FormsModule, RemainingPipe, OrdinalPipe, CreditcardPipe, AgePipe, SalutationPipe, FilterPipe, Disablecopypaste, Charonly, MySortPipePipe],
   templateUrl: './pipe-demo.html',
   styleUrl: './pipe-demo.css',
 })
@@ -39,4 +40,6 @@ export class PipeDemo {
   ];
 
   searchText = '';
+
+  arr = [10, 50, 20, ]
 }

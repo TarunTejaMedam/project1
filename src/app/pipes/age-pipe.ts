@@ -9,7 +9,7 @@ export class AgePipe implements PipeTransform {
     let birthDate = new Date(value);
     let todayDate = new Date();
 
-    if(!value || (birthDate.getFullYear >= todayDate.getFullYear)) return 0;
+    // if(!value || (birthDate.getFullYear >= todayDate.getFullYear)) return 0;
     
     return todayDate.getFullYear() - birthDate.getFullYear();
   }
