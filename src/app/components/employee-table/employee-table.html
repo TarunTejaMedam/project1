@@ -1,0 +1,35 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Salary</th>
+            <th>Status</th>
+            <th>Gender</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(emp of employeesObj; track $index){
+        <tr>
+
+            <td>{{emp.id}}</td>
+            <td>{{emp.name}}</td>
+            <td>{{emp.role}}</td>
+            <td>{{emp.salary}}</td>
+            <td>{{emp.status}}</td>
+            <td>{{emp.gender}}</td>
+            <td>
+                <!-- <button class="btn btn-primary" (click)="viewEmp(emp)" data-bs-toggle="modal"
+            data-bs-target="#exampleModal"><fa-icon [icon]="faEye"></fa-icon></button> -->
+        <button class="btn btn-danger mx-2" (click)="sendDeleteEmp(emp.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
+            </td>
+        </tr>
+        }
+        @empty{
+        <div class="text-center">
+            No employees to display.</div>
+        }
+    </tbody>
+</table>

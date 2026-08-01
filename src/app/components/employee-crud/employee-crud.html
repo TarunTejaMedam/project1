@@ -3,90 +3,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <h2 class="text-center mb-2">Employees Table</h2>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Salary</th>
-                            <th>Status</th>
-                            <th>Gender</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for(emp of filEmployees; track $index){
-                        <tr>
-                            <td>{{emp.id}}</td>
-                            <td>{{emp.name}}</td>
-                            <td>{{emp.role}}</td>
-                            <td>{{emp.salary}}</td>
-                            <td>{{emp.status}}</td>
-                            <td>{{emp.gender}}</td>
-                            <td>
-                                <button class="btn btn-primary" (click)="viewEmp(emp)" data-bs-toggle="modal" data-bs-target="#exampleModal"><fa-icon [icon]="faEye"></fa-icon></button>
-                                <button class="btn btn-danger mx-2" (click)="deleteEmp(emp.id)"><fa-icon [icon]="faTrash"></fa-icon></button>
-                            </td>
-                        </tr>
-                        }
-                        @empty{
-                        <div class="text-center">
-                        No employees to display.</div>
-                        }
-                    </tbody>
-                </table>
+               <app-employee-table [employeesObj]="filEmployees" (deleteEmpEvent)="deleteEmp($event)"></app-employee-table>
             </div>
             <div class="col-sm-6">
                 <h2 class="text-center mb-2">Add Employee</h2>
-                <form class="row g-3">
-                    <div class="col-md-12">
-                        <label for="validationDefault01" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="validationDefault01" name="name" [(ngModel)]="name" appCharonly appDisablecopypaste required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationDefault03" class="form-label">Role</label>
-                        <select class="form-select" id="validationDefault02" name="role" [(ngModel)]="role" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option value="Developer">Developer</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Tester">Tester</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationDefault05" class="form-label">Salary</label>
-                        <input type="number" class="form-control" id="validationDefault03" name="salary" [(ngModel)]="salary" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationDefault05" class="form-label">Status</label>
-                        <div class="">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Active" name="status" [(ngModel)]="status" required>
-                                <label class="form-check-label" for="inlineRadio1">Active</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Inactive" name="status" [(ngModel)]="status" required>
-                                <label class="form-check-label" for="inlineRadio2">Inactive</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="validationDefault05" class="form-label">Gender</label>
-                        <div class="">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male" name="gender" [(ngModel)]="gender" required>
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female" name="gender" [(ngModel)]="gender" required>
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-primary" type="submit" (click)="addEmp()"><fa-icon [icon]="faPlus"></fa-icon> Add Employee</button>
-                    </div>
-                </form>
+                <app-employee-add (addEmpEvent)="addEmp($event)"></app-employee-add>
             </div>
         </div>
     </div>
