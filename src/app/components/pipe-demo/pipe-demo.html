@@ -111,7 +111,8 @@
 <div class="border border-3 rounded-3 m-3 p-3">
     <h4>Custom Pipe(Salutation, Search/Filter)</h4>
     <div class="col-sm-6 offset-3">
-        <input type="search" class="form-control mb-4" placeholder="Search..." [(ngModel)]="searchText" appCharonly appDisablecopypaste>
+        <input type="search" class="form-control mb-4" placeholder="Search..." [(ngModel)]="searchText" appCharonly
+            appDisablecopypaste>
     </div>
 
     <table class="table table-bordered">
@@ -146,13 +147,29 @@
 </div>
 
 <div class="border border-3 rounded-3 p-3 m-3">
-  <h4>Pure & Impure Pipe</h4>
-  <div>Array Items::</div>
-  @for (item of arr | mySortPipe; track $index) {
+    <h4>Pure & Impure Pipe</h4>
+    <div>Array Items::</div>
+    @for (item of arr | mySortPipe; track $index) {
     <b>{{item}} &nbsp;</b>
-  }
-  <div>
-    <input type="number" #newNum />
-    <button class="btn btn-primary mx-2" (click)="arr.push(+newNum.value)">Add</button>
-  </div>
+    }
+    <div>
+        <input type="number" #newNum />
+        <button class="btn btn-primary mx-2" (click)="arr.push(+newNum.value)">Add</button>
+    </div>
+</div>
+
+
+<div class="border border-3 rounded-3 p-3 m-3">
+    <h4>Ratings</h4>
+    <button class="btn" [style.color]="rating >=1 ? 'gold' : 'grey'" (click)="giveRatings(1)">
+    <fa-icon [icon]="faStar"></fa-icon></button>
+    <button class="btn" [style.color]="rating >=2 ? 'gold' : 'grey'" (click)="giveRatings(2)">
+    <fa-icon [icon]="faStar"></fa-icon></button>
+    <button class="btn" [style.color]="rating >=3 ? 'gold' : 'grey'" (click)="giveRatings(3)">
+    <fa-icon [icon]="faStar"></fa-icon></button>
+    <button class="btn" [style.color]="rating >=4 ? 'gold' : 'grey'" (click)="giveRatings(4)">
+    <fa-icon [icon]="faStar"></fa-icon></button>
+    <button class="btn" [style.color]="rating >=5 ? 'gold' : 'grey'" (click)="giveRatings(5)">
+    <fa-icon [icon]="faStar"></fa-icon></button>
+    <div>You gave {{rating}} star rating</div>
 </div>

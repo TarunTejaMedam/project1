@@ -10,10 +10,12 @@ import { FilterPipe } from '../../pipes/filter-pipe';
 import { Disablecopypaste } from '../../directives/disablecopypaste';
 import { Charonly } from '../../directives/charonly';
 import { MySortPipePipe } from '../../pipes/my-sort-pipe-pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';  
 
 @Component({
   selector: 'app-pipe-demo',
-  imports: [CommonModule, FormsModule, RemainingPipe, OrdinalPipe, CreditcardPipe, AgePipe, SalutationPipe, FilterPipe, Disablecopypaste, Charonly, MySortPipePipe],
+  imports: [CommonModule, FormsModule, RemainingPipe, OrdinalPipe, CreditcardPipe, AgePipe, SalutationPipe, FilterPipe, Disablecopypaste, Charonly, MySortPipePipe, FontAwesomeModule],
   templateUrl: './pipe-demo.html',
   styleUrl: './pipe-demo.css',
 })
@@ -41,5 +43,13 @@ export class PipeDemo {
 
   searchText = '';
 
-  arr = [10, 50, 20, ]
+  arr = [10, 50, 20, 5];
+
+  faStar = faStar;
+
+  rating = 0;
+  giveRatings(stars: number){
+    if(this.rating == stars) this.rating = 0;
+    else this.rating = stars;
+  }
 }
