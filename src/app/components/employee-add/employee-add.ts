@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +8,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
   imports: [FormsModule, FontAwesomeModule],
   templateUrl: './employee-add.html',
   styleUrl: './employee-add.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   outputs: ['addEmpEvent'],
 })
 export class EmployeeAdd {
@@ -19,15 +20,14 @@ export class EmployeeAdd {
   gender = '';
 
   addEmpEvent = new EventEmitter();
-  sendAddEmp(){
-
+  sendAddEmp() {
     let employee = {
       name: this.name,
       role: this.role,
       salary: this.salary,
       status: this.status,
-      gender: this.gender
-    }
+      gender: this.gender,
+    };
     this.addEmpEvent.emit(employee);
 
     this.name = '';

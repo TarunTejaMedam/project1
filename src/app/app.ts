@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Categories } from './components/categories/categories';
 import { Carousel } from './components/carousel/carousel';
@@ -10,7 +10,8 @@ import { Navbar } from './components/navbar/navbar';
   selector: 'app-root',
   imports: [Navbar, Categories, Body, Footer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('project1');

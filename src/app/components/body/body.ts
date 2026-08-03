@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Databinding } from '../databinding/databinding';
 import { Directives } from '../directives/directives';
 import { ProductList } from '../product-list/product-list';
@@ -10,6 +10,7 @@ import { ParentDemo } from '../parent-demo/parent-demo';
   selector: 'app-body',
   imports: [ParentDemo],
   templateUrl: './body.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './body.css',
 })
 export class Body {}

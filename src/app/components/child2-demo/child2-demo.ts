@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-child2-demo',
@@ -6,7 +6,8 @@ import { Component, EventEmitter } from '@angular/core';
   templateUrl: './child2-demo.html',
   styleUrl: './child2-demo.css',
   inputs: ['aChild2'],
-  outputs: ['courseNameEvent']
+  changeDetection: ChangeDetectionStrategy.Eager,
+  outputs: ['courseNameEvent'],
 })
 export class Child2Demo {
   aChild2: any;
@@ -15,7 +16,7 @@ export class Child2Demo {
   courseName = 'Angular';
 
   courseNameEvent = new EventEmitter();
-  sendDataToParent(){
+  sendDataToParent() {
     this.courseNameEvent.emit(this.courseName);
   }
 }

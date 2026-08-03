@@ -1,4 +1,4 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,14 +8,15 @@ import { faTrash, faEye } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './employee-table.html',
   styleUrl: './employee-table.css',
   inputs: ['employeesObj'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   outputs: ['deleteEmpEvent'],
 })
 export class EmployeeTable {
   faTrash = faTrash;
-    employeesObj:any;
+  employeesObj: any;
 
-    deleteEmpEvent = new EventEmitter();
-    sendDeleteEmp(empID: any){
-      this.deleteEmpEvent.emit(empID);
-    }
+  deleteEmpEvent = new EventEmitter();
+  sendDeleteEmp(empID: any) {
+    this.deleteEmpEvent.emit(empID);
+  }
 }

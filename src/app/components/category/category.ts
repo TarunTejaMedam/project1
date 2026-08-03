@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-category',
   imports: [],
   templateUrl: './category.html',
   styleUrl: './category.css',
-  inputs: ['categoryObj']
+  changeDetection: ChangeDetectionStrategy.Eager,
+  inputs: ['categoryObj'],
 })
 export class Category {
-  categoryObj:any;
+  categoryObj: any;
 }
