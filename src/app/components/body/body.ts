@@ -8,7 +8,7 @@ import { ParentDemo } from '../parent-demo/parent-demo';
 
 @Component({
   selector: 'app-body',
-  imports: [EmployeeCRUD],
+  imports: [ParentDemo],
   templateUrl: './body.html',
   styleUrl: './body.css',
 })

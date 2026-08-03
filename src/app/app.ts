@@ -8,7 +8,7 @@ import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Body, Footer],
+  imports: [Navbar, Categories, Body, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
