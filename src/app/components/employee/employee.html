@@ -1,0 +1,38 @@
+<div class="border border-2 rounded-2 p-2 m-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <select #empFilter (change)="filterEmp(empFilter.value)" class="form-select" style="width: 400px;">
+                    <option value="allEmployees">All Employees</option>
+                    <option value="maleEmployees">Male Employees</option>
+                    <option value="femaleEmployees">Female Employees</option>
+                </select>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Salary</th>
+                        <th>Status</th>
+                        <th>Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(emp of selectedEmployees; track $index){
+                    <tr>
+                        <td>{{emp.id}}</td>
+                        <td>{{emp.name}}</td>
+                        <td>{{emp.role}}</td>
+                        <td>{{emp.salary}}</td>
+                        <td>{{emp.status}}</td>
+                        <td>{{emp.gender}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
