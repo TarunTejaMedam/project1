@@ -1,0 +1,116 @@
+<div class="border border-2 rounded-2 p-2 m-2">
+    <h2 class="text-center">User Information</h2>
+    <div class="container">
+        <form action="" class="row mb-4">
+            <div class="col-md-2 mb-1">
+                <label class="form-label">ID:</label>
+                <input type="text" name="id" id="" class="form-control col-md-6" [(ngModel)]="id">
+            </div>
+            <div class="col-md-2 mb-1">
+                <label class="form-label">User Name:</label>
+                <input type="text" name="username" id="" class="form-control col-md-6" [(ngModel)]="username">
+            </div>
+            <div class="col-md-2 mb-1">
+                <label for="" class="form-label">Phone:</label>
+                <input type="text" class="form-control" name="phone" [(ngModel)]="phone">
+            </div>
+            <div class="col-md-6 mb-1">
+                <label for="" class="form-label">Email:</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="email">
+            </div>
+            <div class="col-md-6">
+                <label for="" class="form-label">University:</label>
+                <input type="text" class="form-control" name="university" [(ngModel)]="university">
+            </div>
+            <div class="col-md-4">
+                <label for="" class="form-lable mb-2">Gender:</label>
+                <input type="text" class="form-control" name="gender" [(ngModel)]="gender">
+            </div>
+            <div class="col-md-2 mt-4">
+                <button class="btn btn-success" type="submit" (click)="addUser()"><fa-icon [icon]="faPlus"></fa-icon>
+                    Add User</button>
+            </div>
+        </form>
+        @if(isLoading()){
+            <div class="text-center">
+            <img src="https://i.sstatic.net/kOnzy.gif" alt="" style="width: 200px;">
+            </div>
+        } @else{
+        <div class="row">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>University</th>
+                        <th>Gender</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(user of userList(); track $index){
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.university}}</td>
+                        <td>{{user.gender}}</td>
+                        <td>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                (click)="viewUser(user)"><fa-icon [icon]="faPencilSquare"></fa-icon></button>
+                            <button class="btn btn-danger mx-2" (click)="deleteUser(user.id)"><fa-icon
+                                    [icon]="faTrash"></fa-icon></button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        }
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="emptyFields()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-1">
+                    <label class="form-label">ID:</label>
+                    <input type="text" name="id" id="" class="form-control col-md-6" [(ngModel)]="id">
+                </div>
+                <div class="mb-1">
+                    <label class="form-label">User Name:</label>
+                    <input type="text" name="username" id="" class="form-control col-md-6" [(ngModel)]="username">
+                </div>
+                <div class="mb-1">
+                    <label for="" class="form-label">Phone:</label>
+                    <input type="text" class="form-control" name="phone" [(ngModel)]="phone">
+                </div>
+                <div class="mb-1">
+                    <label for="" class="form-label">Email:</label>
+                    <input type="text" class="form-control" name="email" [(ngModel)]="email">
+                </div>
+                <div class="mb-1">
+                    <label for="" class="form-label">University:</label>
+                    <input type="text" class="form-control" name="university" [(ngModel)]="university">
+                </div>
+                <div class="mb-1">
+                    <label for="" class="form-lable mb-3">Gender:</label>
+                    <input type="text" class="form-control" name="gender" [(ngModel)]="gender">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    (click)="emptyFields()">Close</button>
+                <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="updateUser()">Update User</button>
+            </div>
+        </div>
+    </div>
+</div>

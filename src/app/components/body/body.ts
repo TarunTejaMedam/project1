@@ -6,10 +6,13 @@ import { EmployeeCRUD } from '../employee-crud/employee-crud';
 import { PipeDemo } from '../pipe-demo/pipe-demo';
 import { ParentDemo } from '../parent-demo/parent-demo';
 import { Employee } from "../employee/employee";
+import { CommentList } from '../comment-list/comment-list';
+import { UserCRUD } from '../user-crud/user-crud';
+import { ProductListHTTP } from '../product-list-http/product-list-http';
 
 @Component({
   selector: 'app-body',
-  imports: [Employee],
+  imports: [UserCRUD],
   templateUrl: './body.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './body.css',

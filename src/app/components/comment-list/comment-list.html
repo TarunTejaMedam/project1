@@ -1,0 +1,22 @@
+<h3 class="text-center">Comment List using HTTP</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(comment of commentList | async; track $index){
+            <tr>
+                <td>{{comment.id}}</td>
+                <td>{{comment.name}}</td>
+                <td>{{comment.email}}</td>
+                <td>{{comment.body}}</td>
+            </tr>
+        }
+    </tbody>
+</table>

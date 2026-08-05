@@ -1,0 +1,31 @@
+<h3 class="text-center">Product List</h3>
+
+<div class="container">
+   <button class="btn btn-primary" (click)="fetchData()">Fetch Products</button>
+    @if(isLoading()){
+     <img src="https://i.sstatic.net/kOnzy.gif" alt="">
+    }@else{
+    <div class="row">
+        @for (prod of productList(); track $index){
+        <div class="col-sm-3">
+            <div class="card text-center mb-4">
+                <img src="{{prod.image}}" class="card-img-top" alt="..." height="200px">
+                <div class="card-body">
+                    <h5 class="card-title">{{prod.category}}</h5>
+                    <p class="card-text text-truncate">{{prod.title}}</p>
+                    <p class="card-text text-truncate">{{prod.description}}</p>
+                    <p class="card-text">
+                        {{prod.price}}</p>
+                    <p class="card-text">{{prod.rating.rate}}
+                    </p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+        }
+        @empty{
+            <div class="text-center mb-4">No Products to display.</div>
+        }
+    </div>
+}
+</div>
